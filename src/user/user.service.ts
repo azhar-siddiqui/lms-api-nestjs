@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { RegisterUserDto } from 'src/auth/dto/registerUser.dto';
 import { User } from './schemas/user.schema';
-import { UserRole } from './user.types';
+import { Role } from './user.types';
 
 @Injectable()
 export class UserService {
@@ -16,7 +16,7 @@ export class UserService {
         lName: registerUserDto.lName,
         email: registerUserDto.email,
         password: registerUserDto.password,
-        role: UserRole.STUDENT,
+        role: Role.STUDENT,
       });
     } catch (error) {
       const DUPLICATE_KEY_ERROR_CODE = 11000;

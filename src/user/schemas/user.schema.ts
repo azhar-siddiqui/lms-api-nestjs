@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Exclude } from 'class-transformer';
 import { HydratedDocument } from 'mongoose';
-import { UserRole } from '../user.types';
+import { Role } from '../user.types';
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -16,11 +15,10 @@ export class User {
   @Prop({ required: true, unique: true })
   email!: string;
 
-  @Exclude()
   @Prop({ required: true })
   password!: string;
 
-  @Prop({ enum: UserRole, default: UserRole.STUDENT })
+  @Prop({ enum: Role, default: Role.STUDENT })
   role!: string;
 }
 
