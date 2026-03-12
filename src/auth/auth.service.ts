@@ -82,4 +82,13 @@ export class AuthService {
 
     return { accessToken: token };
   }
+
+  async profileUser(id: string) {
+    const user = await this.userService.findUserById(id);
+
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+    return user;
+  }
 }
