@@ -54,6 +54,15 @@ export class UserService {
     }
   }
 
+  async findUserById(id: string) {
+    try {
+      return await this.userModel.findById({ _id: id }).select('-password');
+    } catch (error) {
+      console.log('Error in findUserById:', error);
+      throw error; // rethrow other unexpected errors
+    }
+  }
+
   // async findOne(email: string) {
   //   return this.userModel.findOne({ email });
   // }
